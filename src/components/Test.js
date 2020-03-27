@@ -7,7 +7,7 @@ const GET_COMPANIES = gql`
   {
     companies {
       name
-      phone
+      phoneNumber
       website
     }
   }
@@ -24,10 +24,10 @@ const Test = () => {
   return (
     <div className="test">
       <h1>Testing Page</h1>
-      {data.companies.map(({name, phone, website}) => (
+      {data.companies.map(({name, phoneNumber, website}) => (
           <>
             <p>{name}</p>
-            <p>{phone}</p>
+            <p>{phoneNumber}</p>
             <p>{website}</p><br/>
           </>
         )
