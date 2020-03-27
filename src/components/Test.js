@@ -16,8 +16,6 @@ const GET_COMPANIES = gql`
 const Test = () => {
   const { loading, error, data } = useQuery(GET_COMPANIES);
 
-  console.log(data);
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
