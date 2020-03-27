@@ -11,6 +11,7 @@ import {
   Home,
   Test,
   Login,
+  NavBar,
 } from './components';
 
 const client = new ApolloClient({
@@ -22,6 +23,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router> 
         <div className="App">
+          <NavBar />
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/test" component={Test} />
