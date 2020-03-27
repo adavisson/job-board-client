@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 import {
   BrowserRouter as Router,
   Route
@@ -9,14 +11,20 @@ import {
   Test,
 } from './components';
 
+const client = new ApolloClient({
+  uri: 'http://localhost:4000',
+})
+
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Route exact path="/" component={Home} />
-        <Route path="/test" component={Test} />
-      </div>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router> 
+        <div className="App">
+          <Route exact path="/" component={Home} />
+          <Route path="/test" component={Test} />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
