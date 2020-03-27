@@ -9,6 +9,7 @@ import {
 import {
   Home,
   Test,
+  Login,
 } from './components';
 
 const client = new ApolloClient({
@@ -21,6 +22,7 @@ function App() {
       <Router> 
         <div className="App">
           <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
           <Route path="/test" component={Test} />
         </div>
       </Router>
