@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import {
   Home,
+  Test,
 } from './components';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Router>
       <div className="App">
         <Route exact path="/" component={Home} />
+        <Route path="/test" component={Test} />
       </div>
     </Router>
   );
