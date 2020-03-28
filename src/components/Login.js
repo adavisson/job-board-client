@@ -12,7 +12,7 @@ const Login = () => {
   }
 
   return (
-    <div className="login-page">
+    <div className="container">
       <Card className="text-center">
         <Card.Header>Login</Card.Header>
         <Card.Body>
