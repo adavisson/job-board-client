@@ -21,7 +21,7 @@ import {
   JobPostings,
 } from './components';
 
-const httpLink = craeteHttpLink({
+const httpLink = createHttpLink({
   uri: SERVER_URI
 });
 
