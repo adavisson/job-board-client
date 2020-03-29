@@ -1,8 +1,14 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+import { SERVER_URI, AUTH_TOKEN } from './constants';
+
+import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { setContext } from 'apollo-link-context';
+
 import {
   BrowserRouter as Router,
   Route
@@ -15,23 +21,38 @@ import {
   JobPostings,
 } from './components';
 
+const httpLink = craeteHttpLink({
+  uri: SERVER_URI
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem(AUTH_TOKEN)
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ''
+    }
+  }
+})
+
 const client = new ApolloClient({
-  uri: 'http://localhost:4000',
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
 })
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router> 
-        <div className="App">
-          <NavBar />
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/job-postings" component={JobPostings} />
-          <Route path="/test" component={Test} />
-        </div>
-      </Router>
-    </ApolloProvider>
+    <Router> 
+      <ApolloProvider client={client}>
+      <div className="App">
+        <NavBar />
+        <Route exact path="/" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/job-postings" component={JobPostings} />
+        <Route path="/test" component={Test} />
+      </div>
+      </ApolloProvider>
+    </Router>
   );
 }
 
