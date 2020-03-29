@@ -9,13 +9,17 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
 
   const _confirm = async data => {
-    const { token } = data.Login
+    const { token } = data.login
     _saveUserData(token)
     props.history.push('/')
   }
 
   const _saveUserData = token => {
     localStorage.setItem(AUTH_TOKEN, token);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
   }
 
   return (
@@ -25,11 +29,11 @@ const Login = (props) => {
         <Card.Body>
           <Mutation
             mutation={LOGIN}
-            VARAIBLES={{ email, password }}
+            variables={{ email, password }}
             onCompleted={data => _confirm(data)}
           >
             {mutation => (
-              <Form onSubmit={mutation}>
+              <Form onSubmit={handleSubmit}>
                 <Form.Group as={Row} controlId="emailInput">
                   <Form.Label column sm="2">Email: </Form.Label>
                   <Col sm="10">
@@ -42,7 +46,7 @@ const Login = (props) => {
                     <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
                   </Col>
                 </Form.Group>
-                <Button variant="dark" type="submit">
+                <Button variant="dark" type="submit" onClick={mutation}>
                   Login
                 </Button>
               </Form>
