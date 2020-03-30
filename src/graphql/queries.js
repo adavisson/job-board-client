@@ -23,3 +23,17 @@ export const GET_COMPANIES = gql`
     }
   }
 `
+
+export const GET_CONTACTS = gql`
+  {
+    contacts {
+      name
+      jobTitle
+      company{
+        name
+      }
+      phoneNumber
+      email
+    }
+  }
+`
