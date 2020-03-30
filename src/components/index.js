@@ -4,6 +4,7 @@ import Login from './Login';
 import NavBar from './NavBar';
 import JobPostings from './JobPostings';
 import Companies from './Companies';
+import Contacts from './Contacts';
 
 export {
   Home,
@@ -12,4 +13,5 @@ export {
   NavBar,
   JobPostings,
   Companies,
+  Contacts,
 }

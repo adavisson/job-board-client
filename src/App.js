@@ -20,6 +20,7 @@ import {
   NavBar,
   JobPostings,
   Companies,
+  Contacts,
 } from './components';
 
 const httpLink = createHttpLink({
@@ -51,6 +52,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/job-postings" component={JobPostings} />
         <Route path="/companies" component={Companies} />
+        <Route path="/contacts" component={Contacts} />
         <Route path="/test" component={Test} />
       </div>
       </ApolloProvider>
