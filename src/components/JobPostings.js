@@ -1,31 +1,29 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
-
-const GET_JOB_POSTINGS = gql`
-  {
-    jobPostings {
-      title
-      company {
-        id
-        name
-      }
-      link
-    }
-  }
-`
+import { GET_JOB_POSTINGS } from '../graphql/queries';
 
 const JobPostings = () => {
+
+  const Heading = () => {
+    return (
+      <h1>JobPostings</h1>
+    )
+  }
+  
   const { loading, error, data } = useQuery(GET_JOB_POSTINGS);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) return (
+    <>
+      <Heading/>
+      <p>Loading...</p>
+    </>
+  )
 
-  console.log(data);
+  if (error) return <p>Error :(</p>;
 
   return (
     <div className="job-postings">
-      <h1>Job Postings</h1>
+      <Heading />
       {data.jobPostings.map(({title, company, link}) => (
           <>
             <h5>{title}</h5>
