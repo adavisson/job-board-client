@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Form, Card, Col, Row, Button} from 'react-bootstrap';
 import { Mutation } from 'react-apollo';
-import { LOGIN } from '../graphql/mutations';
+import { LOGIN, SIGNUP } from '../graphql/mutations';
 import { AUTH_TOKEN } from '../constants';
 
 const Login = (props) => {
@@ -12,7 +12,7 @@ const Login = (props) => {
   const [visible, setVisible] = useState(false);
 
   const _confirm = async data => {
-    const { token } = data.login
+    const { token } = login ? data.login : data.signup
     _saveUserData(token)
     props.history.push('/')
   }
@@ -53,6 +53,13 @@ const Login = (props) => {
             <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
           </Col>
         </Form.Group>
+        {visible && (<p>{password}</p>)}
+        <Form.Group controlId="showPassword">
+          <Button variant="link" onClick={handleVisible}>
+            {!visible && "Show Password"}
+            {visible && "Hide Password"}
+          </Button>
+        </Form.Group>
         <Mutation
           mutation={LOGIN}
           variables={{ email, password }}
@@ -90,10 +97,23 @@ const Login = (props) => {
           </Col>
         </Form.Group>
         {visible && (<p>{password}</p>)}
-        <Button variant="link" onClick={handleVisible}>
-          {!visible && "Show Password"}
-          {visible && "Hide Password"}
-        </Button>
+        <Form.Group controlId="showPassword">
+          <Button variant="link" onClick={handleVisible}>
+            {!visible && "Show Password"}
+            {visible && "Hide Password"}
+          </Button>
+        </Form.Group>
+        <Mutation
+          mutation={SIGNUP}
+          variables={{ name, email, password }}
+          onCompleted={data => _confirm(data)}
+        >
+          {mutation => (
+              <Button variant="dark" type="submit" onClick={mutation}>
+                Sign Up
+              </Button>
+          )}
+        </Mutation>
       </Form>
     )
   }
