@@ -7,3 +7,11 @@ export const LOGIN = gql`
     }
   }
 `
+
+export const SIGNUP = gql`
+  mutation Signup($name: String!, $email: String!, $password: String!) {
+    signup(name: $name, email: $email, password: $password) {
+      token
+    }
+  }
+`
