@@ -37,3 +37,28 @@ export const GET_CONTACTS = gql`
     }
   }
 `
+
+export const GET_CURRENT_USER = gql`
+  {
+    currentUser {
+      name
+      email
+      age
+      bio
+      gender
+      contacts {
+        id
+        name
+      }
+      applications {
+        id
+        jobPosting{
+          title
+        }
+      }
+      notes {
+        body
+      }
+    }
+  }
+`
