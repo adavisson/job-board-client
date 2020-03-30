@@ -21,6 +21,7 @@ import {
   JobPostings,
   Companies,
   Contacts,
+  Account,
 } from './components';
 
 const httpLink = createHttpLink({
@@ -54,6 +55,7 @@ function App() {
         <Route path="/companies" component={Companies} />
         <Route path="/contacts" component={Contacts} />
         <Route path="/test" component={Test} />
+        <Route path="/account" components={Account} />
       </div>
       </ApolloProvider>
     </Router>
