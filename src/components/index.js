@@ -3,6 +3,7 @@ import Test from './Test'
 import Login from './Login';
 import NavBar from './NavBar';
 import JobPostings from './JobPostings';
+import Companies from './Companies';
 
 export {
   Home,
@@ -10,4 +11,5 @@ export {
   Login,
   NavBar,
   JobPostings,
+  Companies,
 }
