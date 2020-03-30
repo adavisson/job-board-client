@@ -55,7 +55,7 @@ function App() {
         <Route path="/companies" component={Companies} />
         <Route path="/contacts" component={Contacts} />
         <Route path="/test" component={Test} />
-        <Route path="/account" components={Account} />
+        <Route path="/account" component={Account} />
       </div>
       </ApolloProvider>
     </Router>

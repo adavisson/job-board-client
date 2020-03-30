@@ -28,10 +28,12 @@ const NavBar = (props) => {
             null
           )}
         </Nav>
-        <Nav inline="true" onSelect={handleClick}>
+        <Nav inline="true">
           {authToken ? (
-            <Nav.Link eventKey="logout"
-            >Logout</Nav.Link>
+            <>
+              <Nav.Link href="/account">Account</Nav.Link>
+              <Nav.Link eventKey="logout" onSelect={handleClick}>Logout</Nav.Link>
+            </>
             ) : (
             <Nav.Link href="/login">Login</Nav.Link>
           )}
