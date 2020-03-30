@@ -10,6 +10,7 @@ const NavBar = (props) => {
 
   const handleClick = (eventKey) => {
     localStorage.removeItem(AUTH_TOKEN);
+    props.history.push('/');
     setLogin(!login);
   };
 
@@ -21,6 +22,11 @@ const NavBar = (props) => {
         <Nav className="mr-auto">
           <Nav.Link href="/job-postings">Job Postings</Nav.Link>
           <Nav.Link href="/companies">Companies</Nav.Link>
+          {authToken ? (
+            <Nav.Link href="/contacts">Contacts</Nav.Link>
+            ) : (
+            null
+          )}
         </Nav>
         <Nav inline="true" onSelect={handleClick}>
           {authToken ? (
