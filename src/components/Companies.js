@@ -23,7 +23,7 @@ const Companies = () => {
             <h5>{name}</h5>
             <p>Address: {address}</p>
             <p>Phone: {phoneNumber}</p>
-            <p>WebSite: <a href={link}>{webSite}</a></p>
+            <p>WebSite: <a href={webSite}>{webSite}</a></p>
             <br/>
           </>
         )
