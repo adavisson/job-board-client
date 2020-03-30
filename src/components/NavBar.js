@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 import { AUTH_TOKEN } from '../constants';
 
-const NavBar = (props) => {
+const NavBar = (props) => {  
+  const [login, setLogin] = useState("");
+
   const authToken = localStorage.getItem(AUTH_TOKEN);
 
   const handleClick = (eventKey) => {
     localStorage.removeItem(AUTH_TOKEN);
-    props.history.push('/');
+    setLogin(!login);
   };
 
   return (
