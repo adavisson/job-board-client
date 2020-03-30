@@ -20,6 +20,9 @@ const NavBar = (props) => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/job-postings">Job Postings</Nav.Link>
+          {authToken ? (
+            <Nav.Link>Companies</Nav.Link>
+          ) : null }
         </Nav>
         <Nav inline="true" onSelect={handleClick}>
           {authToken ? (
