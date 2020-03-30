@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Form, Card, Col, Row, Button} from 'react-bootstrap';
 import { Mutation } from 'react-apollo';
-import { LOGIN } from './graphql/mutations';
+import { LOGIN } from '../graphql/mutations';
 import { AUTH_TOKEN } from '../constants';
 
 const Login = (props) => {
