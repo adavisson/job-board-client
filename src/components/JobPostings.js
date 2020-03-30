@@ -1,20 +1,16 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_JOB_POSTINGS } from '../graphql/queries';
+import Heading from './Heading';
 
 const JobPostings = () => {
+  const title="Job Postings";
 
-  const Heading = () => {
-    return (
-      <h1>JobPostings</h1>
-    )
-  }
-  
   const { loading, error, data } = useQuery(GET_JOB_POSTINGS);
 
   if (loading) return (
     <>
-      <Heading/>
+      <Heading title={title}/>
       <p>Loading...</p>
     </>
   )
@@ -23,7 +19,7 @@ const JobPostings = () => {
 
   return (
     <div className="job-postings">
-      <Heading />
+      <Heading title={title} />
       {data.jobPostings.map(({title, company, link}) => (
           <>
             <h5>{title}</h5>
