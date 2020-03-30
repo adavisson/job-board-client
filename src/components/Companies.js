@@ -18,12 +18,12 @@ const Companies = () => {
   return (
     <div className="companies">
       <Heading title={title} />
-      {data.companies.map(({name, address, phoneNumber, webSite}) => (
+      {data.companies.map(({name, address, phoneNumber, website}) => (
           <>
             <h5>{name}</h5>
             <p>Address: {address}</p>
             <p>Phone: {phoneNumber}</p>
-            <p>WebSite: <a href={webSite}>{webSite}</a></p>
+            <p>Website: <a href={website}>{website}</a></p>
             <br/>
           </>
         )
