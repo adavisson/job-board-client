@@ -12,3 +12,14 @@ export const GET_JOB_POSTINGS = gql`
     }
   }
 `
+
+export const GET_COMPANIES = gql`
+  {
+    compaies {
+      name
+      address
+      phoneNumber
+      website
+    }
+  }
+`
