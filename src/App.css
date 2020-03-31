@@ -56,3 +56,11 @@
   margin: 15px;
   width: 18rem;
 }
+
+.card-header {
+  font-weight: 600;
+}
+
+.navbar {
+  margin-bottom: 15px;
+}
