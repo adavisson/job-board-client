@@ -24,6 +24,9 @@ const Contacts = () => {
   )
   if (error) return <p>Error :(</p>
 
+  // Put into alphabetical order
+  data.contacts.sort((a,b) =>  (a.name > b.name) ? 1 : -1)
+
   return (
     <div className="contacts">
       <Heading title={title} />
