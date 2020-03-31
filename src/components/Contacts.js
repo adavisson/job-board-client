@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from 'react-bootstrap';
 import Heading from './Heading';
 import { useQuery } from '@apollo/react-hooks';
 import { AUTH_TOKEN } from '../constants';
@@ -26,16 +27,19 @@ const Contacts = () => {
   return (
     <div className="contacts">
       <Heading title={title} />
-      {data.contacts.map(({name, jobTitle, company, phoneNumber, email})=> (
-          <>
-            <h5>{name}</h5>
-            <p>{jobTitle} at {company.name}</p>
-            <p>Phone: {phoneNumber}</p>
-            <p>Email: {email}</p>
-            <br/>
-          </>
-        )
-      )}
+      <div className="card-container">
+        {data.contacts.map(({name, jobTitle, company, phoneNumber, email})=> (
+            <Card>
+              <Card.Header><strong>{name}</strong></Card.Header>
+              <Card.Body>
+                <Card.Text>{jobTitle} at {company.name}</Card.Text>
+                <Card.Text>Phone: {phoneNumber}</Card.Text>
+                <Card.Text>Email: {email}</Card.Text>
+              </Card.Body>
+            </Card>
+          )
+        )}
+      </div>
     </div>
   );
 }
