@@ -33,7 +33,7 @@ const Contacts = () => {
       <div className="card-container">
         {data.contacts.map(({name, jobTitle, company, phoneNumber, email})=> (
             <Card>
-              <Card.Header><strong>{name}</strong></Card.Header>
+              <Card.Header>{name}</Card.Header>
               <Card.Body>
                 <Card.Text>{jobTitle} at {company.name}</Card.Text>
                 <Card.Text>Phone: {phoneNumber}</Card.Text>
