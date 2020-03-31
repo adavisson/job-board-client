@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_JOB_POSTINGS } from '../graphql/queries';
+import { Card } from 'react-bootstrap';
 import Heading from './Heading';
 
 const JobPostings = () => {
@@ -19,14 +20,18 @@ const JobPostings = () => {
   return (
     <div className="job-postings">
       <Heading title={title} />
-      {data.jobPostings.map(({title, company, link}) => (
-          <>
-            <h5>{title}</h5>
-            <p>Company: {company.name}</p>
-            <p>Website: <a href={link}>{link}</a></p>
-          </>
-        )
-      )}
+      <div className="card-container">
+        {data.jobPostings.map(({title, company, link}) => (
+            <Card>
+              <Card.Header>{title}</Card.Header>
+              <Card.Body>
+                <Card.Text>Company: {company.name}</Card.Text>
+                <Card.Text>Link to Posting: <a href={link}>{link}</a></Card.Text>
+              </Card.Body>
+            </Card>
+          )
+        )}
+      </div>
     </div>
   );
 }
