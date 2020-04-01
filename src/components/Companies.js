@@ -17,7 +17,6 @@ const Companies = () => {
         {({ loading, error, data }) => {
           if (loading) return (
             <>
-              <Heading title={title} />
               <p>Loading...</p>
             </>
           )
