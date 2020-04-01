@@ -23,3 +23,11 @@ export const CREATE_COMPANY = gql`
     }
   }
 `
+
+export const CREATE_CONTACT = gql`
+  mutation CreateContact($name: String!, $email: String, $phoneNumber: String, $jobTitle: String) {
+    createContact(name: $name, email: $email, phoneNumber: $phoneNumber, jobTitle: $jobTitle) {
+      id
+    }
+  }
+`

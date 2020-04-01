@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Card, Form, Row, Col, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router';
+import { Mutation } from 'react-apollo';
+import { CREATE_CONTACT } from '../graphql/mutations';
 import { AUTH_TOKEN } from '../constants';
 
-const NewContact = () => {
+const NewContact = (props) => {
   const title = "Add Contact"
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -14,6 +16,11 @@ const NewContact = () => {
   if (!authToken) {
     alert('Please login to add a contact')
     return <Redirect to="/login" />
+  }
+
+  const _confirm = async data => {
+    const { id } = data.createContact
+    props.history.push('/contacts')
   }
 
   const handleSubmit = e => {
@@ -47,9 +54,17 @@ const NewContact = () => {
             <Form.Control type="input" value={jobTitle} onChange={e => setJobTitle(e.target.value)} />
           </Col>
         </Form.Group>
-        <Button variant="dark" type="submit">
-          Add Contact
-        </Button>
+        <Mutation
+          mutation={CREATE_CONTACT}
+          variables={{ name, email, phoneNumber, jobTitle }}
+          onCompleted={data => _confirm(data)}
+        >
+          {mutation => (
+            <Button variant="dark" type="submit" onClick={mutation}>
+              Add Contact
+            </Button>
+          )}
+        </Mutation>
       </Form>
     )
   }
