@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_COMPANIES } from '../graphql/queries';
 import Heading from './Heading';
@@ -19,6 +19,7 @@ const Companies = () => {
   return (
     <div className="companies">
       <Heading title={title} />
+      <Button variant="dark" href="/new-company">Add Company</Button>
       <div className="card-container">
         {data.companies.map(({name, address, phoneNumber, website}) => (
             <Card className="company-card">
