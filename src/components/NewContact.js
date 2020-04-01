@@ -6,7 +6,7 @@ import { CREATE_CONTACT } from '../graphql/mutations';
 import { AUTH_TOKEN } from '../constants';
 
 const NewContact = (props) => {
-  const title = "Add Contact"
+  const title = "Contact"
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")

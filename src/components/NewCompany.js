@@ -6,7 +6,7 @@ import { CREATE_COMPANY } from '../graphql/mutations';
 import { AUTH_TOKEN } from '../constants';
 
 const NewCompany = (props) => {
-  const title = "Add Company"
+  const title = "Company"
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
