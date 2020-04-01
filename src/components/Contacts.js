@@ -32,7 +32,7 @@ const Contacts = () => {
       <Heading title={title} />
       <div className="card-container">
         {data.contacts.map(({name, jobTitle, company, phoneNumber, email})=> (
-            <Card>
+            <Card className="contact-card">
               <Card.Header>{name}</Card.Header>
               <Card.Body>
                 <Card.Text>{jobTitle} at {company.name}</Card.Text>

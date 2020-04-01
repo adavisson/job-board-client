@@ -22,7 +22,7 @@ const JobPostings = () => {
       <Heading title={title} />
       <div className="card-container">
         {data.jobPostings.map(({title, company, link}) => (
-            <Card>
+            <Card className="job-posting-card">
               <Card.Header>{title}</Card.Header>
               <Card.Body>
                 <Card.Text>Company: {company.name}</Card.Text>
