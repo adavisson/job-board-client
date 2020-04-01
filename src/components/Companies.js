@@ -22,6 +22,10 @@ const Companies = () => {
             </>
           )
           if (error) return <p>Error :(</p>
+
+          // Put into alphabetical order
+          data.companies.sort((a,b) => (a.name > b.name) ? 1 : -1)
+
           return (
             <div className="card-container">
               {data.companies.map(({name, address, phoneNumber, website}) => (
