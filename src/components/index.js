@@ -6,6 +6,7 @@ import JobPostings from './JobPostings';
 import Companies from './Companies';
 import Contacts from './Contacts';
 import Account from './Account';
+import NewCompany from './NewCompany';
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   Companies,
   Contacts,
   Account,
+  NewCompany,
 }
