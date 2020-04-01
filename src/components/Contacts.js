@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { Query } from 'react-apollo';
 import Heading from './Heading';
 import { AUTH_TOKEN } from '../constants';
@@ -18,6 +18,7 @@ const Contacts = () => {
   return (
     <div className="contacts">
       <Heading title={title} />
+      <Button variant="dark" href="/new-contact">Add Contact</Button>
       <Query query={GET_CONTACTS}>
         {({ loading, error, data }) => {
           if (loading) return (
