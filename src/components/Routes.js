@@ -10,6 +10,7 @@ import {
   Account,
   NewCompany,
   NewContact,
+  NewJobPosting,
 } from '.';
 
 
@@ -21,6 +22,7 @@ const Routes = () => {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/job-postings" component={JobPostings} />
+        <Route path="/new-job-posting" component={NewJobPosting} />
         <Route path="/companies" component={Companies} />
         <Route path="/new-company" component={NewCompany} />
         <Route path="/contacts" component={Contacts} />
