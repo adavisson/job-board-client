@@ -1,15 +1,18 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { GET_JOB_POSTINGS } from '../graphql/queries';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
+import { AUTH_TOKEN } from '../constants';
 import Heading from './Heading';
 
 const JobPostings = () => {
   const title="Job Postings";
+  const authToken = localStorage.getItem(AUTH_TOKEN)
 
   return (
     <div className="job-postings">
       <Heading title={title} />
+      {authToken && (<Button variant="dark" href="/new-job-posting">Add Job Posting</Button>)}
       <Query query={GET_JOB_POSTINGS}>
         {({ loading, error, data }) => {
           if (loading) return (
