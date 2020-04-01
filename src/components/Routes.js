@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import {
   Home,
-  Test,
   Login,
   NavBar,
   JobPostings,
@@ -26,7 +25,6 @@ const Routes = () => {
         <Route path="/new-company" component={NewCompany} />
         <Route path="/contacts" component={Contacts} />
         <Route path="/new-contact" component={NewContact} />
-        <Route path="/test" component={Test} />
         <Route path="/account" component={Account} />
       </Switch>
     </div>
