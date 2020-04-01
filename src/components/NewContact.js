@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Form, Row, Col, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router';
 import { AUTH_TOKEN } from '../constants';
 
@@ -16,9 +16,41 @@ const NewContact = () => {
     return <Redirect to="/login" />
   }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+  }
+
   const newContactForm = () => {
     return (
-      <p>form</p>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group as={Row} controlId="nameInput">
+          <Form.Label column smj="2">Name: </Form.Label>
+          <Col sm="10">
+            <Form.Control type="input" value={name} onChange={e => setName(e.target.value)} />
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} controlId="emailInput">
+          <Form.Label column smj="2">Email: </Form.Label>
+          <Col sm="10">
+            <Form.Control type="input" value={email} onChange={e => setEmail(e.target.value)} />
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} controlId="phoneNumberInput">
+          <Form.Label column smj="2">Phone Number: </Form.Label>
+          <Col sm="10">
+            <Form.Control type="input" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} />
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} controlId="jobTitleInput">
+          <Form.Label column smj="2">Job Title: </Form.Label>
+          <Col sm="10">
+            <Form.Control type="input" value={jobTitle} onChange={e => setJobTitle(e.target.value)} />
+          </Col>
+        </Form.Group>
+        <Button variant="dark" type="submit">
+          Add Contact
+        </Button>
+      </Form>
     )
   }
 
