@@ -10,6 +10,7 @@ import {
   Contacts,
   Account,
   NewCompany,
+  NewContact,
 } from '.';
 
 
@@ -24,6 +25,7 @@ const Routes = () => {
         <Route path="/companies" component={Companies} />
         <Route path="/new-company" component={NewCompany} />
         <Route path="/contacts" component={Contacts} />
+        <Route path="/new-contact" component={NewContact} />
         <Route path="/test" component={Test} />
         <Route path="/account" component={Account} />
       </Switch>
