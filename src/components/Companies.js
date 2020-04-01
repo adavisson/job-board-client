@@ -31,9 +31,9 @@ const Companies = () => {
                   <Card className="company-card">
                     <Card.Header>{name}</Card.Header>
                     <Card.Body>
-                      <Card.Text>Address: {address}</Card.Text>
-                      <Card.Text>Phone: {phoneNumber}</Card.Text>
-                      <Card.Text>Website: <a href={website}>{website}</a></Card.Text>
+                      {address && (<Card.Text>Address: {address}</Card.Text>)}
+                      {phoneNumber && (<Card.Text>Phone: {phoneNumber}</Card.Text>)}
+                      {website && (<Card.Text>Website: <a href={website}>{website}</a></Card.Text>)}
                     </Card.Body>
                   </Card>
                 )
