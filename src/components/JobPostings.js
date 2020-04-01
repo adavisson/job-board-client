@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { Query } from 'react-apollo';
 import { GET_JOB_POSTINGS } from '../graphql/queries';
 import { Card } from 'react-bootstrap';
 import Heading from './Heading';
@@ -7,31 +7,33 @@ import Heading from './Heading';
 const JobPostings = () => {
   const title="Job Postings";
 
-  const { loading, error, data } = useQuery(GET_JOB_POSTINGS);
-
-  if (loading) return (
-    <>
-      <Heading title={title}/>
-      <p>Loading...</p>
-    </>
-  )
-  if (error) return <p>Error :(</p>
-
   return (
     <div className="job-postings">
       <Heading title={title} />
-      <div className="card-container">
-        {data.jobPostings.map(({title, company, link}) => (
-            <Card className="job-posting-card">
-              <Card.Header>{title}</Card.Header>
-              <Card.Body>
-                <Card.Text>Company: {company.name}</Card.Text>
-                <Card.Text>Link to Posting: <a href={link}>{link}</a></Card.Text>
-              </Card.Body>
-            </Card>
+      <Query query={GET_JOB_POSTINGS}>
+        {({ loading, error, data }) => {
+          if (loading) return (
+            <>
+              <p>Loading...</p>
+            </>
           )
-        )}
-      </div>
+          if (error) return <p>Error :(</p>
+
+          return (
+            <div className="card-container">
+              {data.jobPostings.map(({title, company, link}) => (
+                <Card className="job-posting-card">
+                  <Card.Header>{title}</Card.Header>
+                  <Card.Body>
+                    <Card.Text>Company: {company.name}</Card.Text>
+                    <Card.Text>Link to Posting: <a href={link}>{link}</a></Card.Text>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+          )
+        }}
+      </Query>
     </div>
   );
 }
