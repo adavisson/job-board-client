@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router';
 import { Card, Form, Button, Row, Col } from 'react-bootstrap';
+import { Mutation } from 'react-apollo';
+import { CREATE_COMPANY } from '../graphql/mutations';
+import { AUTH_TOKEN } from '../constants';
 
 const NewCompany = () => {
   const title = "Add Company"
@@ -7,6 +11,12 @@ const NewCompany = () => {
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [website, setWebsite] = useState("");
+  const authToken = localStorage.getItem(AUTH_TOKEN);
+
+  if (!authToken) {
+    alert('Please login to add a company')
+    return <Redirect to="/login" />
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
