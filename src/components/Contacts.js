@@ -38,9 +38,10 @@ const Contacts = () => {
                   <Card className="contact-card">
                     <Card.Header>{name}</Card.Header>
                     <Card.Body>
-                      <Card.Text>{jobTitle} at {company.name}</Card.Text>
-                      <Card.Text>Phone: {phoneNumber}</Card.Text>
-                      <Card.Text>Email: {email}</Card.Text>
+                      {(company && jobTitle) && (<Card.Text>{jobTitle} at {company.name}</Card.Text>)}
+                      {(!company && jobTitle) && (<Card.Text>{jobTitle}</Card.Text>)}
+                      {phoneNumber && (<Card.Text>Phone: {phoneNumber}</Card.Text>)}
+                      {email && (<Card.Text>Email: {email}</Card.Text>)}
                     </Card.Body>
                   </Card>
                 )
