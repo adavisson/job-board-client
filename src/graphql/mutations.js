@@ -15,3 +15,11 @@ export const SIGNUP = gql`
     }
   }
 `
+
+export const CREATE_COMPANY = gql`
+  mutation CreateCompany($name: String!, $address: String, $phoneNumber: String, $website: String) {
+    createCompany(name: $name, address: $address, phoneNumber: $phonNumber, website: $website) {
+      id
+    }
+  }
+`
