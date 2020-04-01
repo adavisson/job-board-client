@@ -5,7 +5,7 @@ import { Mutation } from 'react-apollo';
 import { CREATE_COMPANY } from '../graphql/mutations';
 import { AUTH_TOKEN } from '../constants';
 
-const NewCompany = () => {
+const NewCompany = (props) => {
   const title = "Add Company"
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -16,6 +16,11 @@ const NewCompany = () => {
   if (!authToken) {
     alert('Please login to add a company')
     return <Redirect to="/login" />
+  }
+
+  const _confirm = async data => {
+    const { id } = data.createCompany
+    props.history.push('/companies')
   }
 
   const handleSubmit = e => {
@@ -49,9 +54,17 @@ const NewCompany = () => {
             <Form.Control type="input" value={website} onChange={e => setWebsite(e.target.value)} />
           </Col>
         </Form.Group>
-        <Button variant="dark" type="submit">
-          Add Company
-        </Button>
+        <Mutation
+          mutation={CREATE_COMPANY}
+          variables={{ name, address, phoneNumber, website}}
+          onCompleted={data => _confirm(data)}
+        >
+          {mutation => (
+            <Button variant="dark" type="submit" onClick={mutation}>
+              Add Company
+            </Button>
+          )}
+        </Mutation>
       </Form>
     )
   }
