@@ -14,7 +14,7 @@ const Login = (props) => {
   const _confirm = async data => {
     const { token } = login ? data.login : data.signup
     _saveUserData(token)
-    props.history.push('/')
+    props.history.push('/account')
   }
 
   const _saveUserData = token => {
