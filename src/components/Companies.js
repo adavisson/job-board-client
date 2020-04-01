@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from 'react-bootstrap';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_COMPANIES } from '../graphql/queries';
 import Heading from './Heading';
@@ -18,16 +19,19 @@ const Companies = () => {
   return (
     <div className="companies">
       <Heading title={title} />
-      {data.companies.map(({name, address, phoneNumber, website}) => (
-          <>
-            <h5>{name}</h5>
-            <p>Address: {address}</p>
-            <p>Phone: {phoneNumber}</p>
-            <p>Website: <a href={website}>{website}</a></p>
-            <br/>
-          </>
-        )
-      )}
+      <div className="card-container">
+        {data.companies.map(({name, address, phoneNumber, website}) => (
+            <Card className="company-card">
+              <Card.Header>{name}</Card.Header>
+              <Card.Body>
+                <Card.Text>Address: {address}</Card.Text>
+                <Card.Text>Phone: {phoneNumber}</Card.Text>
+                <Card.Text>Website: <a href={website}>{website}</a></Card.Text>
+              </Card.Body>
+            </Card>
+          )
+        )}
+      </div>
     </div>
   );
 }

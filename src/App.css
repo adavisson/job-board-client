@@ -52,7 +52,7 @@
   margin: 15px;
 }
 
-.contact-card .job-posting-card {
+.contact-card, .job-posting-card, .company-card {
   margin: 15px;
   width: 18rem;
 }
