@@ -31,3 +31,11 @@ export const CREATE_CONTACT = gql`
     }
   }
 `
+
+export const CREATE_JOB_POSTING = gql`
+  mutation CreateJobPosting($title: String!, $link: String!, $companyId: ID!) {
+    createJobPosting(title: $title, link: $link, companyId: $companyId) {
+      id
+    }
+  }
+`
