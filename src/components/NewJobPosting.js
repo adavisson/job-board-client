@@ -40,7 +40,7 @@ const NewJobPosting = (props) => {
         <Form.Group as={Row} controlId="nameInput">
           <Form.Label column smj="2">Company: </Form.Label>
           <Col sm="10">
-            <Form.Control as="select" value={companyId} onChange={e => setCompanyId(e.target.value)}>
+            <Form.Control as="select" value={companyId} placeholder="Select" onChange={e => setCompanyId(e.target.value)}>
               <Query query={GET_COMPANIES}>
                 {({ loading, error, data}) => {
                   if (loading) return <></>
@@ -48,8 +48,8 @@ const NewJobPosting = (props) => {
                   
                   return(
                     <>
-                      <option value="">Select Company</option>
-                      {data.companies.map(({id, name}, index) => {
+                      <option value="">Select</option>
+                      {data.companies.map(({id, name}) => {
                         return (
                           <option key={id} value={id}>{name}</option>
                         )
