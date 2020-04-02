@@ -16,6 +16,7 @@ export const GET_JOB_POSTINGS = gql`
 export const GET_COMPANIES = gql`
   {
     companies {
+      id
       name
       address
       phoneNumber
