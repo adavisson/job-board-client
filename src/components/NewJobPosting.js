@@ -61,7 +61,7 @@ const NewJobPosting = (props) => {
             </Form.Control>
           </Col>
         </Form.Group>
-        <Button variant="dark" type="submit">Submit</Button>
+        {companyId && title && link && (<Button variant="dark" type="submit">Submit</Button>)}
       </Form>
     )
   }
