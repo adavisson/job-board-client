@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { AUTH_TOKEN } from '../constants';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
 import { Button, Card, Form, Row, Col } from 'react-bootstrap';
 import { GET_COMPANIES } from '../graphql/queries';
+import { CREATE_JOB_POSTING } from '../graphql/mutations';
 
 const NewJobPosting = (props) => {
   const pageTitle = "Job Posting"
@@ -15,6 +16,11 @@ const NewJobPosting = (props) => {
   if (!authToken) {
     alert('Please login to create a Job Posting')
     return <Redirect to='/login' />
+  }
+
+  const _confirm = async data => {
+    const { id } = data.createJobPosting
+    props.history.push('/job-postings')
   }
 
   const handleSubmit = e => {
@@ -61,7 +67,15 @@ const NewJobPosting = (props) => {
             </Form.Control>
           </Col>
         </Form.Group>
-        {companyId && title && link && (<Button variant="dark" type="submit">Submit</Button>)}
+        <Mutation
+          mutation={CREATE_JOB_POSTING}
+          variables={{ title, link, companyId }}
+          onCompleted={data => _confirm(data)}
+        >
+          {mutation => (
+            companyId && title && link && (<Button variant="dark" type="submit" onClick={mutation}>Submit</Button>)
+          )}
+        </Mutation>
       </Form>
     )
   }
