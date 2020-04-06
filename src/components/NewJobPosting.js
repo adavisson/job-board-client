@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AUTH_TOKEN } from '../constants';
 import { Query, Mutation } from 'react-apollo';
 import { Redirect } from 'react-router';
@@ -25,7 +25,6 @@ const NewJobPosting = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(`Company ID ${companyId}`)
   }
 
   const newJobPostingForm = () => {
