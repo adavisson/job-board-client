@@ -30,7 +30,7 @@ const Contacts = () => {
           if (error) return <p>Error :(</p>
 
           // Put into alphabetical order
-          data.contacts.sort((a,b) =>  (a.name > b.name) ? 1 : -1)
+          data.contacts.sort((a,b) =>  (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1)
           
           return(
             <div className="card-container">
