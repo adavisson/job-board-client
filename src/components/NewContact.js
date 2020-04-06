@@ -27,7 +27,6 @@ const NewContact = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(`Company ID: ${companyId}`)
   }
 
   const newContactForm = () => {
