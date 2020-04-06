@@ -11,6 +11,7 @@ import {
   NewCompany,
   NewContact,
   NewJobPosting,
+  Notes,
 } from '.';
 
 
@@ -28,6 +29,7 @@ const Routes = () => {
         <Route path="/contacts" component={Contacts} />
         <Route path="/new-contact" component={NewContact} />
         <Route path="/account" component={Account} />
+        <Route path="/notes" component={Notes} />
       </Switch>
     </div>
   );

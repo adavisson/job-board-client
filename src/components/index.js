@@ -8,6 +8,7 @@ import Account from './Account';
 import NewCompany from './NewCompany';
 import NewContact from './NewContact';
 import NewJobPosting from './NewJobPosting';
+import Notes from './Notes';
 
 export {
   Home,
@@ -20,4 +21,5 @@ export {
   NewCompany,
   NewContact,
   NewJobPosting,
+  Notes,
 }
