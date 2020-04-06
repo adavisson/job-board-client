@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import { Redirect } from 'react-router';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { AUTH_TOKEN } from '../constants';
 import { Card, Form, Col, Row, Button } from 'react-bootstrap';
 import { GET_COMPANIES, GET_CONTACTS, GET_APPLICATIONS } from '../graphql/queries';
+import { CREATE_NOTE } from '../graphql/mutations';
 
-const NewNote = () => {
+const NewNote = (props) => {
   const title = "New Note"
   const authToken = localStorage.getItem(AUTH_TOKEN)
   const [body, setBody] = useState("")
@@ -16,6 +17,11 @@ const NewNote = () => {
   if (!authToken) {
     alert('Please login to create a note.')
     return <Redirect to="/login" />
+  }
+
+  const _confirm = async data => {
+    const { id } = data.createNote
+    props.history.push('/notes')
   }
 
   const handleSubmit = e => {
@@ -104,7 +110,17 @@ const NewNote = () => {
             </Form.Control>
           </Col>
         </Form.Group>
-        <Button variant="dark">Submit</Button>
+        <Mutation
+          mutation={CREATE_NOTE}
+          variables={{ body, applicationId, companyId, contactId }}
+          onCompleted={data => _confirm(data)}
+        >
+          {mutation => (
+            body && (<Button variant="dark" type="submit" onClick={mutation}>
+              Submit
+            </Button>)
+          )}
+        </Mutation>
       </Form>
     )
   }
