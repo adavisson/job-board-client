@@ -23,7 +23,10 @@ const NavBar = (props) => {
           <Nav.Link href="/job-postings">Job Postings</Nav.Link>
           <Nav.Link href="/companies">Companies</Nav.Link>
           {authToken ? (
-            <Nav.Link href="/contacts">Contacts</Nav.Link>
+            <>
+              <Nav.Link href="/contacts">Contacts</Nav.Link>
+              <Nav.Link href="/notes">Notes</Nav.Link>
+            </>
             ) : (
             null
           )}
