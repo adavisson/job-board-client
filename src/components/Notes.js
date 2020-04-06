@@ -45,7 +45,7 @@ const Notes = () => {
                     {data.notes.map(({updatedAt, body, application, company, contact}) => {
                       return (
                         <tr>
-                          <td>{updatedAt}</td>
+                          <td>{updatedAt.substring(0, 10)}</td>
                           <td>{`${body.substring(0, 30)}...`}</td>
                           <td>{application && (`${application.jobPosting.title} at ${application.jobPosting.company.name}`)}</td>
                           <td>{company && company.name}</td>
