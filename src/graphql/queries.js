@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost';
 export const GET_JOB_POSTINGS = gql`
   {
     jobPostings {
+      id
       title
       company {
         id
@@ -28,6 +29,7 @@ export const GET_COMPANIES = gql`
 export const GET_CONTACTS = gql`
   {
     contacts {
+      id
       name
       jobTitle
       company{
