@@ -16,7 +16,7 @@ const Notes = () => {
   }
 
   return (
-    <div className="table-container">
+    <div className="container">
       <Heading title={title} />
 
       <Table responsive striped bordered size="sm">
@@ -45,7 +45,7 @@ const Notes = () => {
                     return (
                       <tr>
                         <td>{updatedAt}</td>
-                        <td>{body}</td>
+                        <td>{`${body.substring(0, 30)}...`}</td>
                         <td>{application && (`${application.jobPosting.title} at ${application.jobPosting.company.name}`)}</td>
                         <td>{company && company.name}</td>
                         <td>{contact && contact.name}</td>
