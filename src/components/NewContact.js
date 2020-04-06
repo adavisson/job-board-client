@@ -33,7 +33,7 @@ const NewContact = (props) => {
     return (
       <Form onSubmit={handleSubmit}>
         <Form.Group as={Row} controlId="nameInput">
-          <Form.Label column smj="2">Name: </Form.Label>
+          <Form.Label column sm="2">Name: </Form.Label>
           <Col sm="10">
             <Form.Control type="input" value={name} onChange={e => setName(e.target.value)} />
           </Col>
