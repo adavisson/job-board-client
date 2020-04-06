@@ -97,7 +97,7 @@ export const GET_NOTES = gql`
   }
 `
 
-export const GET_APPLICATONS = gql`
+export const GET_APPLICATIONS = gql`
   {
     applications {
       id
