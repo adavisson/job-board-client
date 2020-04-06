@@ -22,10 +22,7 @@ const Contacts = () => {
       <Query query={GET_CONTACTS}>
         {({ loading, error, data }) => {
           if (loading) return (
-            <>
-              <Heading title={title} />
               <p>Loading...</p>
-            </>
           )
           if (error) return <p>Error :(</p>
 
