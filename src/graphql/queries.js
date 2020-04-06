@@ -96,3 +96,19 @@ export const GET_NOTES = gql`
     }
   }
 `
+
+export const GET_APPLICATONS = gql`
+  {
+    applications {
+      id
+      applied
+      jobPosting {
+        title
+        link
+        company {
+          name
+        }
+      }
+    }
+  }
+`
