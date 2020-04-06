@@ -63,3 +63,34 @@ export const GET_CURRENT_USER = gql`
     }
   }
 `
+
+export const GET_NOTES = gql`
+  {
+    notes {
+      id
+      body
+      user{
+        id
+        name
+      }
+      company {
+        id
+        name
+      }
+      application {
+        id
+        jobPosting {
+          title
+          company {
+            name
+          }
+        }
+      }
+      contact {
+        id
+        name
+      }
+      updatedAt
+    }
+  }
+`
