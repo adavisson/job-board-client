@@ -39,3 +39,11 @@ export const CREATE_JOB_POSTING = gql`
     }
   }
 `
+
+export const CREATE_NOTE = gql`
+  mutation CreateNote($body: String!, $applicationId: ID, $companyId: ID, $contactId: ID) {
+    createNote(body: $body, applicationId: $appliationId, companyId: $companyId, contactId: $contactId) {
+      id
+    }
+  }
+`
