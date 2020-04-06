@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import { Redirect } from 'react-router';
 import { Query } from 'react-apollo';
 import { AUTH_TOKEN } from '../constants';
-import { Card, Form, Col, Row } from 'react-bootstrap';
-import { GET_COMPANIES, GET_CONTACTS } from '../graphql/queries';
+import { Card, Form, Col, Row, Button } from 'react-bootstrap';
+import { GET_COMPANIES, GET_CONTACTS, GET_APPLICATIONS } from '../graphql/queries';
 
 const NewNote = () => {
   const title = "New Note"
@@ -32,6 +32,30 @@ const NewNote = () => {
           </Col>
         </Form.Group>
         <p>Associate Note with:</p>
+        <Form.Group as={Row} controlId="applicationId">
+          <Form.Label column sm="2">Application: </Form.Label>
+          <Col sm="10">
+            <Form.Control as="select" value={applicationId} placeholder="None" onChange={e => setApplicationId(e.target.value)}>
+              <Query query={GET_APPLICATIONS}>
+                {({loading, error, data}) => {
+                  if (loading) return <></>
+                  if (error) return <></>
+
+                  return (
+                    <>
+                      <option value="">None</option>
+                      {data.applications.map(({ id, jobPosting }) => {
+                        return (
+                          <option key={id} value={id}>{jobPosting.title} at {jobPosting.company.name}</option>
+                        )
+                      })}
+                    </>
+                  )
+                }}
+              </Query>
+            </Form.Control>
+          </Col>
+        </Form.Group>
         <Form.Group as={Row} controlId="companyInput">
           <Form.Label column sm="2">Company: </Form.Label>
           <Col sm="10">
@@ -80,6 +104,7 @@ const NewNote = () => {
             </Form.Control>
           </Col>
         </Form.Group>
+        <Button variant="dark">Submit</Button>
       </Form>
     )
   }
