@@ -13,6 +13,7 @@ import {
   NewJobPosting,
   Notes,
   NewNote,
+  Applications,
 } from '.';
 
 
@@ -32,6 +33,7 @@ const Routes = () => {
         <Route path="/account" component={Account} />
         <Route path="/notes" component={Notes} />
         <Route path="/new-note" component={NewNote} />
+        <Route path="/applications" component={Applications} />
       </Switch>
     </div>
   );

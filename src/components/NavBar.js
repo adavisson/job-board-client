@@ -25,6 +25,7 @@ const NavBar = (props) => {
           {authToken ? (
             <>
               <Nav.Link href="/contacts">Contacts</Nav.Link>
+              <Nav.Link href="/applications">Applications</Nav.Link>
               <Nav.Link href="/notes">Notes</Nav.Link>
             </>
             ) : (
