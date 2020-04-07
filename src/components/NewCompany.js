@@ -20,7 +20,7 @@ const NewCompany = (props) => {
 
   const _confirm = async data => {
     const { id } = data.createCompany
-    props.history.push('/companies')
+    props.history.push(`/company/${id}`)
   }
 
   const handleSubmit = e => {
