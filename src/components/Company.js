@@ -10,7 +10,7 @@ const Company = (props) => {
   const authToken = localStorage.getItem(AUTH_TOKEN)
 
   if (!authToken) {
-    alert("Please login to view company")
+    alert("Please login to view company.")
     return <Redirect to="/login" />
   }
 
