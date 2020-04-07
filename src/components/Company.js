@@ -27,7 +27,6 @@ const Company = (props) => {
                 <Heading title={data.company.name} />
                 <div className="container">
                   <div className="company-info">
-
                     <p>Address: {data.company.address}</p>
                     <p>Phone Number: {data.company.phoneNumber}</p>
                     <p>Website: {data.company.address}</p>
