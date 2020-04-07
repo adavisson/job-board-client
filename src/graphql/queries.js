@@ -26,6 +26,31 @@ export const GET_COMPANIES = gql`
   }
 `
 
+export const GET_COMPANY = gql`
+  query GetCompany($id: ID!) {
+    company (id: $id) {
+      name
+      address
+      phoneNumber
+      website
+      employees {
+        id
+        name
+        jobTitle
+      }
+      jobPostings {
+        id
+        title
+      }
+      notes {
+        id
+        body
+      }
+
+    }
+  }
+`
+
 export const GET_CONTACTS = gql`
   {
     contacts {

@@ -1,14 +1,66 @@
 import React, { useState } from 'react';
 import Heading from './Heading';
+import { Query } from 'react-apollo';
+import { GET_COMPANY } from '../graphql/queries';
 
 const Company = (props) => {
-  const title = props.name || "company page";
   const [companyId, setCompanyId] = useState(props.match.params.id)
+
+  // const { loading, error, data} = useQuery(GET_COMPANY, {variables: {id: companyId},});
 
   return (
     <div className="company">
-      <Heading title={title} />
-      <p>{companyId}</p>
+      <Query query={GET_COMPANY}
+        variables = {{id: companyId}}>
+          {({ loading, error, data}) => {
+            if (loading) return <p>Loading...</p>
+            if (error) return <p>Error</p>
+
+            return (
+              <>
+                <Heading title={data.company.name} />
+                <div className="container">
+                  <div className="company-info">
+
+                    <p>Address: {data.company.address}</p>
+                    <p>Phone Number: {data.company.phoneNumber}</p>
+                    <p>Website: {data.company.address}</p>
+                  </div>
+                  <div>
+                    <h3>Employees</h3>
+                    <ul>
+                      {data.company.employees.map(employee => {
+                        return (
+                          <li>{employee.name} - {employee.jobTitle}</li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3>Job Postings</h3>
+                    <ul>
+                      {data.company.jobPostings.map(posting => {
+                        return (
+                          <li>{posting.title}</li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3>Notes</h3>
+                    <ol>
+                      {data.company.notes.map(note => {
+                        return (
+                          <li>{note.body.substring(0,25)}</li>
+                        )
+                      })}
+                    </ol>
+                  </div>
+                </div>
+              </>
+            )
+          }}
+      </Query>
     </div>
   );
 }
