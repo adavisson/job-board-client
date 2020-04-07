@@ -3,6 +3,7 @@ import Login from './Login';
 import NavBar from './NavBar';
 import JobPostings from './JobPostings';
 import Companies from './Companies';
+import Company from './Company';
 import Contacts from './Contacts';
 import Account from './Account';
 import NewCompany from './NewCompany';
@@ -18,6 +19,7 @@ export {
   NavBar,
   JobPostings,
   Companies,
+  Company,
   Contacts,
   Account,
   NewCompany,

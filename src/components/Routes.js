@@ -6,6 +6,7 @@ import {
   NavBar,
   JobPostings,
   Companies,
+  Company,
   Contacts,
   Account,
   NewCompany,
@@ -27,6 +28,7 @@ const Routes = () => {
         <Route path="/job-postings" component={JobPostings} />
         <Route path="/new-job-posting" component={NewJobPosting} />
         <Route path="/companies" component={Companies} />
+        <Route path="/company/:id" component={Company} />
         <Route path="/new-company" component={NewCompany} />
         <Route path="/contacts" component={Contacts} />
         <Route path="/new-contact" component={NewContact} />
