@@ -31,7 +31,7 @@ const Company = (props) => {
                     <p>Phone Number: {data.company.phoneNumber}</p>
                     <p>Website: {data.company.address}</p>
                   </div>
-                  <div>
+                  {data.company.employees.length > 0 && (<div>
                     <h3>Employees</h3>
                     <ul>
                       {data.company.employees.map(employee => {
@@ -40,8 +40,8 @@ const Company = (props) => {
                         )
                       })}
                     </ul>
-                  </div>
-                  <div>
+                  </div>)}
+                  {data.company.jobPostings.length > 0 && (<div>
                     <h3>Job Postings</h3>
                     <ul>
                       {data.company.jobPostings.map(posting => {
@@ -50,8 +50,8 @@ const Company = (props) => {
                         )
                       })}
                     </ul>
-                  </div>
-                  <div>
+                  </div>)}
+                  {data.company.notes.length > 0 && (<div>
                     <h3>Notes</h3>
                     <ol>
                       {data.company.notes.map(note => {
@@ -60,7 +60,7 @@ const Company = (props) => {
                         )
                       })}
                     </ol>
-                  </div>
+                  </div>)}
                 </div>
               </>
             )
