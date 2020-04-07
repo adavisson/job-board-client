@@ -18,7 +18,7 @@ const Contacts = () => {
   return (
     <div className="contacts">
       <Heading title={title} />
-      <Button variant="dark" href="/new-contact">Add Contact</Button>
+      <Button variant="dark" href="/contact/new">Add Contact</Button>
       <Query query={GET_CONTACTS}>
         {({ loading, error, data }) => {
           if (loading) return (

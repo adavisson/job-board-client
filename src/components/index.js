@@ -5,6 +5,7 @@ import JobPostings from './JobPostings';
 import Companies from './Companies';
 import Company from './Company';
 import Contacts from './Contacts';
+import Contact from './Contact';
 import Account from './Account';
 import NewCompany from './NewCompany';
 import NewContact from './NewContact';
@@ -21,6 +22,7 @@ export {
   Companies,
   Company,
   Contacts,
+  Contact,
   Account,
   NewCompany,
   NewContact,

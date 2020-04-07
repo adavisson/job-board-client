@@ -12,7 +12,7 @@ const Companies = () => {
   return (
     <div className="companies">
       <Heading title={title} />
-      {authToken && (<Button variant="dark" href="/new-company">Add Company</Button>)}
+      {authToken && (<Button variant="dark" href="/company/new">Add Company</Button>)}
       <Query query={GET_COMPANIES}>
         {({ loading, error, data }) => {
           if (loading) return (
@@ -36,7 +36,7 @@ const Companies = () => {
                       {website && (<Card.Text>Website: <a href={website}>{website}</a></Card.Text>)}
                     </Card.Body>
                     <Card.Footer>
-                      <Button variant="dark" href={`/company/${id}`}>Company Page</Button>
+                      <Button variant="dark" href={`/companies/${id}`}>Company Page</Button>
                     </Card.Footer>
                   </Card>
                 )

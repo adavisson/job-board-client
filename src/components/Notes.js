@@ -18,7 +18,7 @@ const Notes = () => {
   return (
     <div className="notes">
       <Heading title={title} />
-      <Button variant="dark" href="/new-note">New Note</Button>
+      <Button variant="dark" href="/note/new">New Note</Button>
       <div className="container">
         <Table responsive striped bordered size="sm">
           <thead>
