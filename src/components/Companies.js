@@ -27,7 +27,7 @@ const Companies = () => {
 
           return (
             <div className="card-container">
-              {data.companies.map(({name, address, phoneNumber, website}) => (
+              {data.companies.map(({id, name, address, phoneNumber, website}) => (
                   <Card className="company-card">
                     <Card.Header>{name}</Card.Header>
                     <Card.Body>
@@ -35,6 +35,9 @@ const Companies = () => {
                       {phoneNumber && (<Card.Text>Phone: {phoneNumber}</Card.Text>)}
                       {website && (<Card.Text>Website: <a href={website}>{website}</a></Card.Text>)}
                     </Card.Body>
+                    <Card.Footer>
+                      <Button variant="dark" href={`/company/${id}`}>Company Page</Button>
+                    </Card.Footer>
                   </Card>
                 )
               )}

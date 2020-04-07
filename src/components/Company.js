@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import Heading from './Heading';
 import { Query } from 'react-apollo';
+import { Redirect } from 'react-router';
 import { GET_COMPANY } from '../graphql/queries';
+import { AUTH_TOKEN } from '../constants';
 
 const Company = (props) => {
-  const [companyId, setCompanyId] = useState(props.match.params.id)
+  const companyId = props.match.params.id
+  const authToken = localStorage.getItem(AUTH_TOKEN)
 
-  // const { loading, error, data} = useQuery(GET_COMPANY, {variables: {id: companyId},});
+  if (!authToken) {
+    alert("Please login to view company")
+    return <Redirect to="/login" />
+  }
 
   return (
     <div className="company">
