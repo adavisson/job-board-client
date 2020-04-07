@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Heading from './Heading';
 import { Query } from 'react-apollo';
 import { Redirect } from 'react-router';
