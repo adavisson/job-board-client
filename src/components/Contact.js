@@ -1,10 +1,12 @@
 import React from 'react';
 import Heading from './Heading';
+import { Query } from 'react-apollo';
 import { Redirect } from 'react-router';
 import { AUTH_TOKEN } from '../constants';
 
-const Contact = () => {
+const Contact = (props) => {
   const name = "Contact"
+  const contactId = props.match.params.id
   const authToken = localStorage.getItem(AUTH_TOKEN)
 
   if (!authToken) {
@@ -13,7 +15,10 @@ const Contact = () => {
   }
 
   return (
-    <Heading title={name} />
+    <div className="contact">
+      <Heading title={name} />
+      <p>{contactId}</p>
+    </div>
   );
 }
  
