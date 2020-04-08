@@ -163,6 +163,9 @@ export const GET_NOTE = gql`
         jobPosting {
           id
           title
+          company {
+            name
+          }
         }
       }
       company {
