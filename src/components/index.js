@@ -12,6 +12,7 @@ import NewCompany from './NewCompany';
 import NewContact from './NewContact';
 import NewJobPosting from './NewJobPosting';
 import Notes from './Notes';
+import Note from './Note';
 import NewNote from './NewNote';
 import Applications from './Applications';
 
@@ -29,6 +30,7 @@ export {
   NewCompany,
   NewContact,
   NewJobPosting,
+  Note,
   Notes,
   NewNote,
   Applications,
