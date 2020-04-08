@@ -31,7 +31,7 @@ const Contacts = () => {
           
           return(
             <div className="card-container">
-              {data.contacts.map(({name, jobTitle, company, phoneNumber, email})=> (
+              {data.contacts.map(({id, name, jobTitle, company, phoneNumber, email})=> (
                   <Card className="contact-card">
                     <Card.Header>{name}</Card.Header>
                     <Card.Body>
@@ -40,6 +40,9 @@ const Contacts = () => {
                       {phoneNumber && (<Card.Text>Phone: {phoneNumber}</Card.Text>)}
                       {email && (<Card.Text>Email: {email}</Card.Text>)}
                     </Card.Body>
+                    <Card.Footer>
+                      <Button variant="dark" href={`/contacts/${id}`}>View Contact</Button>
+                    </Card.Footer>
                   </Card>
                 )
               )}
