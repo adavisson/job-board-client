@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { SERVER_URI, AUTH_TOKEN } from './constants';
 import Routes from './components/Routes';
