@@ -2,6 +2,7 @@ import Home from './Home'
 import Login from './Login';
 import NavBar from './NavBar';
 import JobPostings from './JobPostings';
+import JobPosting from './JobPosting';
 import Companies from './Companies';
 import Company from './Company';
 import Contacts from './Contacts';
@@ -19,6 +20,7 @@ export {
   Login,
   NavBar,
   JobPostings,
+  JobPosting,
   Companies,
   Company,
   Contacts,
