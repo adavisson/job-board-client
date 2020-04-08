@@ -154,6 +154,29 @@ export const GET_NOTES = gql`
   }
 `
 
+export const GET_NOTE = gql`
+  query GetNote($id: ID!) {
+    note(id: $id) {
+      body
+      application {
+        id
+        jobPosting {
+          id
+          name
+        }
+      }
+      company {
+        id
+        name
+      }
+      contact {
+        id
+        name
+      }
+    }
+  }
+`
+
 export const GET_APPLICATIONS = gql`
   {
     applications {
