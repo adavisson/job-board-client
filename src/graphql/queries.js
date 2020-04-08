@@ -14,6 +14,19 @@ export const GET_JOB_POSTINGS = gql`
   }
 `
 
+export const GET_JOB_POSTING = gql`
+  query GetJobPosting ($id: ID!) {
+    jobPosting(id: $id){
+      title
+      link
+      company {
+        id
+        name
+      }
+    }
+  }
+`
+
 export const GET_COMPANIES = gql`
   {
     companies {
