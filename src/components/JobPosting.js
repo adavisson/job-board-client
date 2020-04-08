@@ -16,8 +16,10 @@ const JobPosting = (props) => {
           return (
             <>
               <Heading title={data.jobPosting.title} />
-              <p>Link to Posting: {data.jobPosting.link}</p>
-              <p>Company: {data.jobPosting.company.name}</p>
+              <div className="container">
+                <p>Link to Posting: {data.jobPosting.link}</p>
+                <p>Company: {data.jobPosting.company.name}</p>
+              </div>
             </>
           )
         }}
