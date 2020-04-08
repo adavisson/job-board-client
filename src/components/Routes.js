@@ -14,6 +14,7 @@ import {
   NewCompany,
   NewContact,
   NewJobPosting,
+  Note,
   Notes,
   NewNote,
   Applications,
@@ -37,6 +38,7 @@ const Routes = () => {
         <Route path="/contacts" component={Contacts} />
         <Route path="/contact/new" component={NewContact} />
         <Route path="/account" component={Account} />
+        <Route path="/notes/:id" component={Note} />
         <Route path="/notes" component={Notes} />
         <Route path="/note/new" component={NewNote} />
         <Route path="/applications" component={Applications} />

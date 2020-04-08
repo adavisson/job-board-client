@@ -4,7 +4,6 @@ import { Query } from 'react-apollo';
 import { GET_JOB_POSTING } from '../graphql/queries';
 
 const JobPosting = (props) => {
-  const title = "Job Posting"
   const jobPostingId = props.match.params.id
   return (
     <div className="job-posting">
@@ -17,8 +16,10 @@ const JobPosting = (props) => {
           return (
             <>
               <Heading title={data.jobPosting.title} />
-              <p>Link to Posting: {data.jobPosting.link}</p>
-              <p>Company: {data.jobPosting.company.name}</p>
+              <div className="container">
+                <p>Link to Posting: {data.jobPosting.link}</p>
+                <p>Company: {data.jobPosting.company.name}</p>
+              </div>
             </>
           )
         }}

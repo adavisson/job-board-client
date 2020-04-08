@@ -42,7 +42,7 @@ const Notes = () => {
 
                 return (
                   <>
-                    {data.notes.map(({updatedAt, body, application, company, contact}) => {
+                    {data.notes.map(({id, updatedAt, body, application, company, contact}) => {
                       return (
                         <tr>
                           <td>{updatedAt.substring(0, 10)}</td>
@@ -50,6 +50,7 @@ const Notes = () => {
                           <td>{application && (`${application.jobPosting.title} at ${application.jobPosting.company.name}`)}</td>
                           <td>{company && company.name}</td>
                           <td>{contact && contact.name}</td>
+                          <td><a href={`/notes/${id}`}>View Note</a></td>
                         </tr>
                       )
                     })}
