@@ -66,6 +66,25 @@ export const GET_CONTACTS = gql`
   }
 `
 
+export const GET_CONTACT = gql`
+  query GetContact($id: ID!) {
+    contact(id: $id) {
+      name
+      email
+      phoneNumber
+      jobTitle
+      company {
+        id
+        name
+      }
+      notes {
+        id
+        body
+      }
+    }
+  }
+`
+
 export const GET_CURRENT_USER = gql`
   {
     currentUser {
