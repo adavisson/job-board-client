@@ -5,6 +5,7 @@ import {
   Login,
   NavBar,
   JobPostings,
+  JobPosting,
   Companies,
   Company,
   Contacts,
@@ -26,6 +27,7 @@ const Routes = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
+        <Route path="/job-postings/:id" component={JobPosting} />
         <Route path="/job-postings" component={JobPostings} />
         <Route path="/job-posting/new" component={NewJobPosting} />
         <Route path="/companies/:id" component={Company} />

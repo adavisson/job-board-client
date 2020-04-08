@@ -24,13 +24,16 @@ const JobPostings = () => {
 
           return (
             <div className="card-container">
-              {data.jobPostings.map(({title, company, link}) => (
+              {data.jobPostings.map(({id, title, company, link}) => (
                 <Card className="job-posting-card">
                   <Card.Header>{title}</Card.Header>
                   <Card.Body>
                     <Card.Text>Company: {company.name}</Card.Text>
                     <Card.Text>Link to Posting: <a href={link}>{link}</a></Card.Text>
                   </Card.Body>
+                  <Card.Footer>
+                    <Button variant="dark" href={`/job-postings/${id}`}>View Job Posting</Button>
+                  </Card.Footer>
                 </Card>
               ))}
             </div>
