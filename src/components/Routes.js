@@ -1,5 +1,5 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 import {
   Home,
   Login,
@@ -18,11 +18,10 @@ import {
   Notes,
   NewNote,
   Applications,
-} from '.';
-
+} from '.'
 
 const Routes = () => {
-  return (  
+  return (
     <div className="App">
       <NavBar />
       <Switch>
@@ -44,7 +43,7 @@ const Routes = () => {
         <Route path="/applications" component={Applications} />
       </Switch>
     </div>
-  );
+  )
 }
- 
-export default Routes;
+
+export default Routes

@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 import { Redirect } from 'react-router'
-import Heading from './Heading';
-import { AUTH_TOKEN } from '../constants';
-import { GET_CURRENT_USER } from '../graphql/queries';
-import { Query } from 'react-apollo';
+import Heading from './Heading'
+import { AUTH_TOKEN } from '../constants'
+import { GET_CURRENT_USER } from '../graphql/queries'
+import { Query } from 'react-apollo'
 
 const Account = () => {
-  const title="Account Page"
-  const authToken = localStorage.getItem(AUTH_TOKEN);
+  const title = 'Account Page'
+  const authToken = localStorage.getItem(AUTH_TOKEN)
 
   if (!authToken) {
     alert('Please login to view your contacts.')
@@ -18,10 +18,10 @@ const Account = () => {
     <div className="account">
       <Heading title={title} />
       <Query query={GET_CURRENT_USER}>
-        {({ loading, error, data}) => {
-          if(loading) return <p>Loading...</p>
-          if(error) return <p>Error :(</p>
-          
+        {({ loading, error, data }) => {
+          if (loading) return <p>Loading...</p>
+          if (error) return <p>Error :(</p>
+
           const user = data.currentUser
 
           return (
@@ -36,7 +36,7 @@ const Account = () => {
         }}
       </Query>
     </div>
-  );
+  )
 }
- 
-export default Account;
+
+export default Account

@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import { gql } from 'apollo-boost'
 
 export const GET_JOB_POSTINGS = gql`
   {
@@ -15,8 +15,8 @@ export const GET_JOB_POSTINGS = gql`
 `
 
 export const GET_JOB_POSTING = gql`
-  query GetJobPosting ($id: ID!) {
-    jobPosting(id: $id){
+  query GetJobPosting($id: ID!) {
+    jobPosting(id: $id) {
       title
       link
       company {
@@ -41,7 +41,7 @@ export const GET_COMPANIES = gql`
 
 export const GET_COMPANY = gql`
   query GetCompany($id: ID!) {
-    company (id: $id) {
+    company(id: $id) {
       name
       address
       phoneNumber
@@ -59,7 +59,6 @@ export const GET_COMPANY = gql`
         id
         body
       }
-
     }
   }
 `
@@ -70,7 +69,7 @@ export const GET_CONTACTS = gql`
       id
       name
       jobTitle
-      company{
+      company {
         name
       }
       phoneNumber
@@ -112,7 +111,7 @@ export const GET_CURRENT_USER = gql`
       }
       applications {
         id
-        jobPosting{
+        jobPosting {
           title
         }
       }
@@ -128,7 +127,7 @@ export const GET_NOTES = gql`
     notes {
       id
       body
-      user{
+      user {
         id
         name
       }

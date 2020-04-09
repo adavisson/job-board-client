@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-import { withRouter } from 'react-router';
-import { AUTH_TOKEN } from '../constants';
+import React, { useState } from 'react'
+import { Navbar, Nav } from 'react-bootstrap'
+import { withRouter } from 'react-router'
+import { AUTH_TOKEN } from '../constants'
 
-const NavBar = (props) => {  
-  const [login, setLogin] = useState("");
+const NavBar = (props) => {
+  const [login, setLogin] = useState('')
 
-  const authToken = localStorage.getItem(AUTH_TOKEN);
+  const authToken = localStorage.getItem(AUTH_TOKEN)
 
   const handleClick = (eventKey) => {
-    localStorage.removeItem(AUTH_TOKEN);
-    props.history.push('/');
-    setLogin(!login);
-  };
+    localStorage.removeItem(AUTH_TOKEN)
+    props.history.push('/')
+    setLogin(!login)
+  }
 
   return (
     <Navbar bg="dark" variant="dark" sticky="top" expand="lg">
@@ -28,23 +28,23 @@ const NavBar = (props) => {
               <Nav.Link href="/applications">Applications</Nav.Link>
               <Nav.Link href="/notes">Notes</Nav.Link>
             </>
-            ) : (
-            null
-          )}
+          ) : null}
         </Nav>
         <Nav inline="true">
           {authToken ? (
             <>
               <Nav.Link href="/account">Account</Nav.Link>
-              <Nav.Link eventKey="logout" onSelect={handleClick}>Logout</Nav.Link>
+              <Nav.Link eventKey="logout" onSelect={handleClick}>
+                Logout
+              </Nav.Link>
             </>
-            ) : (
+          ) : (
             <Nav.Link href="/login">Login</Nav.Link>
           )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-  );
+  )
 }
- 
-export default withRouter(NavBar);
+
+export default withRouter(NavBar)
