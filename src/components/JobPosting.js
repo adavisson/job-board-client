@@ -16,8 +16,8 @@ const JobPosting = (props) => {
             <>
               <Heading title={data.jobPosting.title} />
               <div className="container">
-                <p>Link to Posting: {data.jobPosting.link}</p>
-                <p>Company: {data.jobPosting.company.name}</p>
+                <p>Link to Posting: <a href={data.jobPosting.link}>{data.jobPosting.link}</a></p>
+                <p>Company: <a href={`/companies/${data.jobPosting.company.id}`}>{data.jobPosting.company.name}</a></p>
               </div>
             </>
           )
