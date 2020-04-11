@@ -57,10 +57,10 @@ const Notes = () => {
                             <td>{`${body.substring(0, 30)}...`}</td>
                             <td>
                               {application &&
-                                `${application.jobPosting.title} at ${application.jobPosting.company.name}`}
+                                <a href={`/job-postings/${application.jobPosting.id}`}>{application.jobPosting.title} at {application.jobPosting.company.name}</a>}
                             </td>
-                            <td>{company && company.name}</td>
-                            <td>{contact && contact.name}</td>
+                            <td>{company && <a href={`/companies/${company.id}`}>{company.name}</a>}</td>
+                            <td>{contact && <a href={`/contacts/${contact.id}`}>{contact.name}</a>}</td>
                             <td>
                               <a href={`/notes/${id}`}>View Note</a>
                             </td>
