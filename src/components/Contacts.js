@@ -40,7 +40,7 @@ const Contacts = () => {
                     <Card.Body>
                       {company && jobTitle && (
                         <Card.Text>
-                          {jobTitle} at {company.name}
+                          {jobTitle} at <a href={`/companies/${company.id}`}>{company.name}</a>
                         </Card.Text>
                       )}
                       {!company && jobTitle && (
