@@ -139,6 +139,7 @@ export const GET_NOTES = gql`
       application {
         id
         jobPosting {
+          id
           title
           company {
             name
