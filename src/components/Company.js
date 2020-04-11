@@ -28,7 +28,7 @@ const Company = (props) => {
                 <div className="company-info">
                   <p>Address: {data.company.address}</p>
                   <p>Phone Number: {data.company.phoneNumber}</p>
-                  <p>Website: {data.company.address}</p>
+                  <p>Website: <a href={data.company.website}>{data.company.website}</a></p>
                 </div>
                 {data.company.employees.length > 0 && (
                   <div>
@@ -37,7 +37,7 @@ const Company = (props) => {
                       {data.company.employees.map((employee) => {
                         return (
                           <li>
-                            {employee.name} - {employee.jobTitle}
+                            <a href={`/contacts/${employee.id}`}>{employee.name}</a> - {employee.jobTitle}
                           </li>
                         )
                       })}
@@ -49,7 +49,7 @@ const Company = (props) => {
                     <h3>Job Postings</h3>
                     <ul>
                       {data.company.jobPostings.map((posting) => {
-                        return <li>{posting.title}</li>
+                        return <li><a href={`/job-postings/${posting.id}`}>{posting.title}</a></li>
                       })}
                     </ul>
                   </div>
@@ -59,7 +59,7 @@ const Company = (props) => {
                     <h3>Notes</h3>
                     <ol>
                       {data.company.notes.map((note) => {
-                        return <li>{note.body.substring(0, 25)}</li>
+                        return <li><a href={`/notes/${note.id}`}>{note.body.substring(0, 25)}</a></li>
                       })}
                     </ol>
                   </div>

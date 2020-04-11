@@ -70,6 +70,7 @@ export const GET_CONTACTS = gql`
       name
       jobTitle
       company {
+        id
         name
       }
       phoneNumber
@@ -138,6 +139,7 @@ export const GET_NOTES = gql`
       application {
         id
         jobPosting {
+          id
           title
           company {
             name

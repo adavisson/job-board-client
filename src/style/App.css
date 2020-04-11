@@ -37,6 +37,10 @@
   }
 }
 
+.btn-link {
+  color: gray;
+}
+
 .container {
   padding: 20px;
   display: flex;

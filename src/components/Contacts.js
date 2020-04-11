@@ -40,7 +40,7 @@ const Contacts = () => {
                     <Card.Body>
                       {company && jobTitle && (
                         <Card.Text>
-                          {jobTitle} at {company.name}
+                          {jobTitle} at <a href={`/companies/${company.id}`}>{company.name}</a>
                         </Card.Text>
                       )}
                       {!company && jobTitle && (
@@ -49,7 +49,7 @@ const Contacts = () => {
                       {phoneNumber && (
                         <Card.Text>Phone: {phoneNumber}</Card.Text>
                       )}
-                      {email && <Card.Text>Email: {email}</Card.Text>}
+                      {email && <Card.Text>Email: <a href={`mailto:${email}`} target="_blank">{email}</a></Card.Text>}
                     </Card.Body>
                     <Card.Footer>
                       <Button variant="dark" href={`/contacts/${id}`}>

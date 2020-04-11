@@ -28,9 +28,9 @@ const Contact = (props) => {
                 <div className="contact-info">
                   <h4>
                     {data.contact.jobTitle}
-                    {data.contact.company && ` at ${data.contact.company.name}`}
+                    {data.contact.company && <> at <a href={`/companies/${data.contact.company.id}`}>{data.contact.company.name}</a></>}
                   </h4>
-                  {data.contact.email && <p>Email: {data.contact.email}</p>}
+                  {data.contact.email && <p>Email: <a href={`mailto:${data.contact.email}`} target="_blank">{data.contact.email}</a></p>}
                   {data.contact.phoneNumber && (
                     <p>Phone Number: {data.contact.phoneNumber}</p>
                   )}
@@ -40,7 +40,7 @@ const Contact = (props) => {
                     <h3>Notes</h3>
                     <ol>
                       {data.contact.notes.map((note) => {
-                        return <li>{note.body.substring(0, 25)}</li>
+                        return <li><a href={`/notes/${note.id}`}>{note.body.substring(0, 25)}</a></li>
                       })}
                     </ol>
                   </div>
