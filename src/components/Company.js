@@ -28,7 +28,7 @@ const Company = (props) => {
                 <div className="company-info">
                   <p>Address: {data.company.address}</p>
                   <p>Phone Number: {data.company.phoneNumber}</p>
-                  <p>Website: {data.company.address}</p>
+                  <p>Website: {data.company.website}</p>
                 </div>
                 {data.company.employees.length > 0 && (
                   <div>
