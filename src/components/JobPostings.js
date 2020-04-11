@@ -33,7 +33,7 @@ const JobPostings = () => {
                 <Card className="job-posting-card">
                   <Card.Header>{title}</Card.Header>
                   <Card.Body>
-                    <Card.Text>Company: {company.name}</Card.Text>
+                    <Card.Text>Company: <a href={`/companies/${company.id}`}>{company.name}</a></Card.Text>
                     <Card.Text>
                       Link to Posting: <a href={link}>{link}</a>
                     </Card.Text>
