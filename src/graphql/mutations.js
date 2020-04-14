@@ -95,3 +95,11 @@ export const DELETE_CONTACT = gql`
     }
   }
 `
+
+export const DELETE_APPLICATION = gql`
+  mutation DeleteApplication($id: ID!) {
+    deleteApplication(id: $id) {
+      id
+    }
+  }
+`
