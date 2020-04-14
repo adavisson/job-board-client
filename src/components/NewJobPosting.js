@@ -20,7 +20,7 @@ const NewJobPosting = (props) => {
 
   const _confirm = async (data) => {
     const { id } = data.createJobPosting
-    props.history.push('/job-postings')
+    props.history.push(`/job-postings/${id}`)
   }
 
   const handleSubmit = (e) => {

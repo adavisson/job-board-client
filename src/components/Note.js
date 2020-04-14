@@ -19,7 +19,7 @@ const Note = (props) => {
   }
 
   const _confirm = (data) => {
-    const { id } = data.deleteNote
+    //const { id } = data.deleteNote
     alert(`Note deleted`)
     props.history.push('/notes')
   }

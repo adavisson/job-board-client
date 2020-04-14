@@ -25,7 +25,7 @@ const NewNote = (props) => {
 
   const _confirm = async (data) => {
     const { id } = data.createNote
-    props.history.push('/notes')
+    props.history.push(`/notes/${id}`)
   }
 
   const handleSubmit = (e) => {

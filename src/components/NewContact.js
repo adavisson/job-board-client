@@ -22,7 +22,7 @@ const NewContact = (props) => {
 
   const _confirm = async (data) => {
     const { id } = data.createContact
-    props.history.push('/contacts')
+    props.history.push(`/contacts/${id}`)
   }
 
   const handleSubmit = (e) => {

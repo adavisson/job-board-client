@@ -18,7 +18,7 @@ const Contact = (props) => {
   }
 
   const _confirm = (data) => {
-    const id = data.deleteContact.id
+    // const id = data.deleteContact.id
     alert(`Contact deleted`)
     props.history.push('/contacts')
   }
@@ -56,7 +56,7 @@ const Contact = (props) => {
                     {data.contact.jobTitle}
                     {data.contact.company && <> at <a href={`/companies/${data.contact.company.id}`}>{data.contact.company.name}</a></>}
                   </h4>
-                  {data.contact.email && <p>Email: <a href={`mailto:${data.contact.email}`} target="_blank">{data.contact.email}</a></p>}
+                  {data.contact.email && <p>Email: <a href={`mailto:${data.contact.email}`} target="_blank" rel="noopener noreferrer">{data.contact.email}</a></p>}
                   {data.contact.phoneNumber && (
                     <p>Phone Number: {data.contact.phoneNumber}</p>
                   )}
