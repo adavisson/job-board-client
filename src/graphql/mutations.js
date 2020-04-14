@@ -87,3 +87,11 @@ export const DELETE_NOTE = gql`
     }
   }
 `
+
+export const DELETE_CONTACT = gql`
+  mutation DeleteContact($id: ID!) {
+    deleteContact(id: $id) {
+      id
+    }
+  }
+`
