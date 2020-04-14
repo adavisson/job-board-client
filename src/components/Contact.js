@@ -1,17 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Heading from './Heading'
-import { Query } from 'react-apollo'
+import { Query, Mutation } from 'react-apollo'
 import { Redirect } from 'react-router'
 import { AUTH_TOKEN } from '../constants'
 import { GET_CONTACT } from '../graphql/queries'
+import { DELETE_CONTACT } from '../graphql/mutations'
+import { Button } from 'react-bootstrap';
 
 const Contact = (props) => {
   const contactId = props.match.params.id
   const authToken = localStorage.getItem(AUTH_TOKEN)
+  const [confirm, setConfirm] = useState(false)
 
   if (!authToken) {
     alert('Please login to view contact.')
     return <Redirect to="/login" />
+  }
+
+  const _confirm = (data) => {
+    const id = data.deleteContact.id
+    alert(`Contact deleted`)
+    props.history.push('/contacts')
+  }
+
+  const confirmDeletion = () => {
+    return (
+      <Mutation
+        mutation={DELETE_CONTACT}
+        variables={{id: contactId}}
+        onCompleted={(data)=> _confirm(data)}
+      >
+        {(mutation)=> (
+          <div>
+            <Button variant="dark" onClick={mutation}>Confirm</Button>{" "}
+            <Button variant="light" onClick={() => setConfirm(false)}>Cancel</Button>
+          </div>
+        )}
+      </Mutation>
+    )
   }
 
   return (
@@ -50,6 +76,8 @@ const Contact = (props) => {
           )
         }}
       </Query>
+      {!confirm && <Button variant="link" onClick={() => setConfirm(true)}>Delete Contact</Button>}
+      {confirm && confirmDeletion()}
     </div>
   )
 }
