@@ -1,18 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Heading from './Heading'
-import { Query } from 'react-apollo'
+import { Query, Mutation } from 'react-apollo'
 import { AUTH_TOKEN } from '../constants'
 import { GET_NOTE } from '../graphql/queries'
+import { DELETE_NOTE } from '../graphql/mutations'
 import { Redirect } from 'react-router'
+import { Button } from 'react-bootstrap';
 
 const Note = (props) => {
   const title = 'Note'
   const authToken = localStorage.getItem(AUTH_TOKEN)
   const noteId = props.match.params.id
+  const [confirm, setConfirm] = useState(false)
 
   if (!authToken) {
     alert('Please login to view note.')
     return <Redirect to="/login" />
+  }
+
+  const _confirm = (data) => {
+    const { id } = data.deleteNote
+    alert(`Note deleted`)
+    props.history.push('/notes')
+  }
+
+  const confirmDeletion = () => {
+    return (
+      <Mutation
+        mutation={DELETE_NOTE}
+        variables={{id: noteId}}
+        onCompleted={(data) => _confirm(data)}
+      >
+        {(mutation) => (
+          <span>
+            <Button variant="dark" onClick={mutation}>Confirm Deletion</Button>{" "}
+            <Button variant="light" onClick={() => setConfirm(false)}>Cancel</Button>
+          </span>
+        )}
+      </Mutation>
+    )
   }
 
   return (
@@ -67,6 +93,8 @@ const Note = (props) => {
           )
         }}
       </Query>
+      {!confirm && <Button variant="link" onClick={() => setConfirm(true)}>Delete Note</Button>}
+      {confirm && confirmDeletion()}
     </div>
   )
 }
