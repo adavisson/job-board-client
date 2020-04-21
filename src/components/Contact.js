@@ -11,6 +11,7 @@ const Contact = (props) => {
   const contactId = props.match.params.id
   const authToken = localStorage.getItem(AUTH_TOKEN)
   const [confirm, setConfirm] = useState(false)
+  const [update, setUpdate] = useState(false)
 
   if (!authToken) {
     alert('Please login to view contact.')
@@ -40,6 +41,35 @@ const Contact = (props) => {
     )
   }
 
+  const renderContact = (data) => {
+    return (
+      <div className="container">
+        <div className="contact-info">
+          <h4>
+            {data.contact.jobTitle}
+            {data.contact.company && <> at <a href={`/companies/${data.contact.company.id}`}>{data.contact.company.name}</a></>}
+          </h4>
+          {data.contact.email && <p>Email: <a href={`mailto:${data.contact.email}`} target="_blank" rel="noopener noreferrer">{data.contact.email}</a></p>}
+          {data.contact.phoneNumber && (
+            <p>Phone Number: {data.contact.phoneNumber}</p>
+          )}
+        </div>
+        {data.contact.notes.length > 0 && (
+          <div>
+            <h3>Notes</h3>
+            <ol>
+              {data.contact.notes.map((note) => {
+                return <li><a href={`/notes/${note.id}`}>{note.body.substring(0, 25)}</a></li>
+              })}
+            </ol>
+          </div>
+        )}
+        {!confirm && <Button variant="link" onClick={() => setConfirm(true)}>Delete Contact</Button>}
+        {confirm && confirmDeletion()}
+      </div>
+    )
+  }
+
   return (
     <div className="contact">
       <Query query={GET_CONTACT} variables={{ id: contactId }}>
@@ -50,34 +80,14 @@ const Contact = (props) => {
           return (
             <>
               <Heading title={data.contact.name} />
-              <div className="container">
-                <div className="contact-info">
-                  <h4>
-                    {data.contact.jobTitle}
-                    {data.contact.company && <> at <a href={`/companies/${data.contact.company.id}`}>{data.contact.company.name}</a></>}
-                  </h4>
-                  {data.contact.email && <p>Email: <a href={`mailto:${data.contact.email}`} target="_blank" rel="noopener noreferrer">{data.contact.email}</a></p>}
-                  {data.contact.phoneNumber && (
-                    <p>Phone Number: {data.contact.phoneNumber}</p>
-                  )}
-                </div>
-                {data.contact.notes.length > 0 && (
-                  <div>
-                    <h3>Notes</h3>
-                    <ol>
-                      {data.contact.notes.map((note) => {
-                        return <li><a href={`/notes/${note.id}`}>{note.body.substring(0, 25)}</a></li>
-                      })}
-                    </ol>
-                  </div>
-                )}
-              </div>
+              <Button variant="link" onClick={() => setUpdate(true)}>Update</Button>
+              {!update && renderContact(data)}
+              {update && <p>UPdate</p>}
             </>
           )
         }}
       </Query>
-      {!confirm && <Button variant="link" onClick={() => setConfirm(true)}>Delete Contact</Button>}
-      {confirm && confirmDeletion()}
+      
     </div>
   )
 }
