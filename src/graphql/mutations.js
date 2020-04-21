@@ -54,6 +54,28 @@ export const CREATE_CONTACT = gql`
   }
 `
 
+export const UPDATE_CONTACT = gql`
+  mutation UpdateContact(
+    $id: ID!
+    $name: String!
+    $email: String
+    $phoneNumber: String
+    $jobTitle: String
+    $companyId: ID
+  ) {
+    updateContact(
+      id: $id
+      name: $name
+      email: $email
+      phoneNumber: $phoneNumber
+      jobTitle: $jobTitle
+      companyId: $companyId
+    ){
+      id
+    }
+  }
+`
+
 export const CREATE_JOB_POSTING = gql`
   mutation CreateJobPosting($title: String!, $link: String!, $companyId: ID!) {
     createJobPosting(title: $title, link: $link, companyId: $companyId) {

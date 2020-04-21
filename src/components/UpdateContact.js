@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import Heading from './Heading'
 import { Query, Mutation } from 'react-apollo'
 import { GET_CONTACT, GET_COMPANIES } from '../graphql/queries'
+import { UPDATE_CONTACT } from '../graphql/mutations'
 import { Redirect } from 'react-router'
 import { Button, Card, Col, Form, Row } from 'react-bootstrap'
 import { AUTH_TOKEN } from '../constants'
 
 const UpdateContact = (props) => {
-  const title = "Update Contact"
+  const title = 'Update Contact'
   const contactId = props.match.params.id
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -19,6 +20,11 @@ const UpdateContact = (props) => {
   if (!authToken) {
     alert('Please login to edit contact')
     return <Redirect to="/login" />
+  }
+
+  const _confirm = (data) => {
+    const { id } = data.updateContact
+    props.history.push(`/contacts/${id}`)
   }
 
   const handleSubmit = (e) => {
@@ -36,6 +42,7 @@ const UpdateContact = (props) => {
             <Form.Control
               type="input"
               value={name}
+              placeHolder={contact.name}
               onChange={(e) => setName(e.target.value)}
             />
           </Col>
@@ -48,6 +55,7 @@ const UpdateContact = (props) => {
             <Form.Control
               type="input"
               value={email}
+              placeholder={contact.email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Col>
@@ -60,6 +68,7 @@ const UpdateContact = (props) => {
             <Form.Control
               type="input"
               value={phoneNumber}
+              placeholder={contact.phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </Col>
@@ -72,11 +81,12 @@ const UpdateContact = (props) => {
             <Form.Control
               type="input"
               value={jobTitle}
+              placeholder={contact.jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
             />
           </Col>
         </Form.Group>
-        <Form.Group as={Row} controlId="nameInput">
+        <Form.Group as={Row} controlId="companyInput">
           <Form.Label column smj="2">
             Company:{' '}
           </Form.Label>
@@ -84,7 +94,7 @@ const UpdateContact = (props) => {
             <Form.Control
               as="select"
               value={companyId}
-              placeholder="Select"
+              placeholder={contact.companyId}
               onChange={(e) => setCompanyId(e.target.value)}
             >
               <Query query={GET_COMPANIES}>
@@ -112,39 +122,47 @@ const UpdateContact = (props) => {
       </Form>
     )
   }
-  
+
   return (
     <>
       <Heading title={title} />
-      <Query
-        query={GET_CONTACT}
-        variables={{ id: contactId }}>
-        {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>
-          if (error) return <p>Error</p>
-
-          setName(data.contact.name)
-          setEmail(data.contact.email)
-          setPhoneNumber(data.contact.phoneNumber)
-          setJobTitle(data.contact.jobTitle)
-          setCompanyId(data.contact.companyId)
-
-          return (
-            <div className="container">
-              <Card className="text-center">
-                <Card.Header>{data.contact.name}</Card.Header>
-                <Card.Body>{updateForm(data.contact)}</Card.Body>
-                <Card.Footer>
-                  <Button variant="dark">Update</Button>{' '}
-                  <Button variant="secondary" onClick={() => props.history.push(`/contacts/${contactId}`)}>Cancel</Button>
-                </Card.Footer>
-              </Card>
-            </div>
-          )
-        }}
-      </Query>
+      <div className="container">
+        <Card className="text-center">
+          <Query query={GET_CONTACT} variables={{ id: contactId }}>
+            {({ loading, error, data }) => {
+              if (loading) return <p>Loading...</p>
+              if (error) return <p>Error</p>
+            
+              return (
+                <>
+                  <Card.Header>{name}</Card.Header>
+                  <Card.Body>{updateForm(data.contact)}</Card.Body>
+                </>
+              )
+            }}
+          </Query>
+          <Card.Footer>
+            <Mutation
+              mutation={UPDATE_CONTACT}
+              variables={{ id: contactId, name, email, phoneNumber, jobTitle, companyId }}
+              onCompleted={(data) => _confirm(data)}
+            >
+              {(mutation) => (
+                <Button variant="dark" onClick={mutation}>Update</Button>
+              )}
+            </Mutation>
+            {' '}
+            <Button
+              variant="secondary"
+              onClick={() => props.history.push(`/contacts/${contactId}`)}
+            >
+              Cancel
+            </Button>
+          </Card.Footer>
+        </Card>
+      </div>
     </>
-  );
+  )
 }
- 
-export default UpdateContact;
+
+export default UpdateContact
