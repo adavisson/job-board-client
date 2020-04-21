@@ -7,6 +7,7 @@ import Companies from './Companies'
 import Company from './Company'
 import Contacts from './Contacts'
 import Contact from './Contact'
+import UpdateContact from './UpdateContact'
 import Account from './Account'
 import NewCompany from './NewCompany'
 import NewContact from './NewContact'
@@ -26,6 +27,7 @@ export {
   Company,
   Contacts,
   Contact,
+  UpdateContact,
   Account,
   NewCompany,
   NewContact,

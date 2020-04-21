@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Heading from './Heading'
+import UpdateContact from './UpdateContact'
 import { Query, Mutation } from 'react-apollo'
 import { Redirect } from 'react-router'
 import { AUTH_TOKEN } from '../constants'
@@ -43,30 +44,33 @@ const Contact = (props) => {
 
   const renderContact = (data) => {
     return (
-      <div className="container">
-        <div className="contact-info">
-          <h4>
-            {data.contact.jobTitle}
-            {data.contact.company && <> at <a href={`/companies/${data.contact.company.id}`}>{data.contact.company.name}</a></>}
-          </h4>
-          {data.contact.email && <p>Email: <a href={`mailto:${data.contact.email}`} target="_blank" rel="noopener noreferrer">{data.contact.email}</a></p>}
-          {data.contact.phoneNumber && (
-            <p>Phone Number: {data.contact.phoneNumber}</p>
-          )}
-        </div>
-        {data.contact.notes.length > 0 && (
-          <div>
-            <h3>Notes</h3>
-            <ol>
-              {data.contact.notes.map((note) => {
-                return <li><a href={`/notes/${note.id}`}>{note.body.substring(0, 25)}</a></li>
-              })}
-            </ol>
+      <>
+        <Button variant="link" onClick={() => props.history.push(`/contacts/${contactId}/edit`)}>Update</Button>
+        <div className="container">
+          <div className="contact-info">
+            <h4>
+              {data.contact.jobTitle}
+              {data.contact.company && <> at <a href={`/companies/${data.contact.company.id}`}>{data.contact.company.name}</a></>}
+            </h4>
+            {data.contact.email && <p>Email: <a href={`mailto:${data.contact.email}`} target="_blank" rel="noopener noreferrer">{data.contact.email}</a></p>}
+            {data.contact.phoneNumber && (
+              <p>Phone Number: {data.contact.phoneNumber}</p>
+            )}
           </div>
-        )}
-        {!confirm && <Button variant="link" onClick={() => setConfirm(true)}>Delete Contact</Button>}
-        {confirm && confirmDeletion()}
-      </div>
+          {data.contact.notes.length > 0 && (
+            <div>
+              <h3>Notes</h3>
+              <ol>
+                {data.contact.notes.map((note) => {
+                  return <li><a href={`/notes/${note.id}`}>{note.body.substring(0, 25)}</a></li>
+                })}
+              </ol>
+            </div>
+          )}
+          {!confirm && <Button variant="link" onClick={() => setConfirm(true)}>Delete Contact</Button>}
+          {confirm && confirmDeletion()}
+        </div>
+      </>
     )
   }
 
@@ -80,9 +84,8 @@ const Contact = (props) => {
           return (
             <>
               <Heading title={data.contact.name} />
-              <Button variant="link" onClick={() => setUpdate(true)}>Update</Button>
               {!update && renderContact(data)}
-              {update && <p>UPdate</p>}
+              {/* {update && <UpdateContact setUpdate={setUpdate}/>} */}
             </>
           )
         }}

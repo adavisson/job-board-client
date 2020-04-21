@@ -10,6 +10,7 @@ import {
   Company,
   Contacts,
   Contact,
+  UpdateContact,
   Account,
   NewCompany,
   NewContact,
@@ -33,6 +34,7 @@ const Routes = () => {
         <Route path="/companies/:id" component={Company} />
         <Route path="/companies" component={Companies} />
         <Route path="/company/new" component={NewCompany} />
+        <Route path="/contacts/:id/edit" component={UpdateContact} />
         <Route path="/contacts/:id" component={Contact} />
         <Route path="/contacts" component={Contacts} />
         <Route path="/contact/new" component={NewContact} />
