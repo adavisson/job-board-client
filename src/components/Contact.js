@@ -45,7 +45,7 @@ const Contact = (props) => {
   const renderContact = (data) => {
     return (
       <>
-        <Button variant="link" onClick={() => props.history.push(`/contacts/${contactId}/edit`)}>Update</Button>
+        <Button variant="link" onClick={() => props.history.push(`/contacts/${contactId}/edit`)}>Edit Contact</Button>
         <div className="container">
           <div className="contact-info">
             <h4>
